@@ -1,6 +1,6 @@
 name: image_provider
 description: Image provider package with support camera, gallery and file picker.
-version: 0.11.0
+version: 0.11.1
 homepage: https://github.com/CosmosExmo/image_provider
 
 publish_to: none
@@ -29,7 +29,7 @@ dependencies:
   focused_image_widget:
     git:
       url: https://github.com/CosmosExmo/focused_image_widget.git
-      ref: 1.0.1
+      ref: 1.0.2
   dialog_service:
     git:
       url: https://github.com/trailon/dialog_service.git
@@ -37,7 +37,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 flutter:
   uses-material-design: true
 
