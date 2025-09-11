@@ -1,19 +1,23 @@
 name: image_provider
 description: Image provider package with support camera, gallery and file picker.
-version: 0.11.2
+version: 0.11.3
 homepage: https://github.com/CosmosExmo/image_provider
 
 publish_to: none
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: ">=3.0.5 <4.0.0"
   flutter: ">=2.2.3"
 
 dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.2
-  native_device_orientation: ^2.0.3
+
+  native_device_orientation:
+    git:
+      url: https://github.com/Alexeenko-Ilya55/flutter_native_device_orientation.git
+
   flutter_image_compress: ^2.3.0
   path_provider: ^2.1.5
   image_picker: ^1.1.2
@@ -44,5 +48,3 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - image_provider_assets/imgs/
-
-
