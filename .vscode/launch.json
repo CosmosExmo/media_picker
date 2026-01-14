@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "image_provider",
+      "name": "media_picker",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "image_provider (profile mode)",
+      "name": "media_picker (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "image_provider (release mode)",
+      "name": "media_picker (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
