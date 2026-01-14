@@ -26,7 +26,7 @@ Add to your `pubspec.yaml`:
 dependencies:
   media_picker:
     git:
-      url: https://github.com/yourrepo/media_picker.git
+      url: https://github.com/CosmosExmo/media_picker.git
       ref: v1.0.0
 ```
 
