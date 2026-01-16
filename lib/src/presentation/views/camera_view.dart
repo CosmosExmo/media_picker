@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/options/compression_options.dart';
 import '../../core/options/media_selection_options.dart';
+import '../../core/utils/orientation_utils.dart';
 import '../../data/datasources/compression/compression_datasource_impl.dart';
 import '../../data/datasources/providers.dart';
 import '../../domain/entities/media_entity.dart';
@@ -14,7 +15,6 @@ import '../../domain/entities/media_metadata_entity.dart';
 import '../../domain/enums/permission_status.dart';
 import '../notifiers/camera_notifier.dart';
 import '../state/camera_state.dart' as app_state;
-import '../widgets/orientation_aware_camera.dart';
 import 'widgets/camera_roll_widget.dart';
 
 /// Camera view for capturing images and videos with metadata support
@@ -88,12 +88,18 @@ class _CameraViewInternal extends ConsumerStatefulWidget {
       _CameraViewInternalState();
 }
 
-class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
+class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
+    with WidgetsBindingObserver {
   final _uuid = const Uuid();
+  AppLifecycleState _appLifecycleState = AppLifecycleState.resumed;
+
+  /// Guard flag to prevent multiple Navigator.pop calls (race condition fix)
+  bool _isClosing = false;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     // Request permission and set initial capture mode
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -119,6 +125,19 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
   }
 
   @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    setState(() {
+      _appLifecycleState = state;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final cameraState = ref.watch(cameraProvider);
 
@@ -134,7 +153,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
           return Stack(
             children: [
               // Camera preview
-              _buildCameraPreview(state),
+              Positioned.fill(child: _buildCameraPreview(state)),
 
               // Metadata overlay (if enabled via cameraConfig)
               // TODO: Implement CameraMetadataStrategy pattern matching for overlay
@@ -177,7 +196,11 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
   }
 
   Widget _buildCameraPreview(app_state.CameraState state) {
-    return OrientationAwareCamera(
+    if (_appLifecycleState != AppLifecycleState.resumed) {
+      return Container(color: Colors.black);
+    }
+    return Align(
+      alignment: Alignment.topCenter,
       child: _buildCameraAwesome(state),
     );
   }
@@ -190,78 +213,119 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
       app_state.CaptureMode.both => SaveConfig.photoAndVideo(),
     };
 
-    return CameraAwesomeBuilder.awesome(
-      saveConfig: saveConfig,
-      // Use default sensor config (let CameraAwesome decide best settings)
-      enablePhysicalButton: true,
-      previewFit: CameraPreviewFit.fitWidth,
-      previewAlignment: Alignment.center,
-      topActionsBuilder: (cameraState) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            children: [
-              // Flash button
-              AwesomeFlashButton(state: cameraState),
-              const SizedBox(width: 12),
-              // Zoom button (moved next to flash)
-              AwesomeZoomSelector(state: cameraState),
-              const Spacer(),
-              // Aspect ratio button (only available in photo mode)
-              if (cameraState is PhotoCameraState)
-                AwesomeAspectRatioButton(state: cameraState),
-              const SizedBox(width: 12),
-              // Close button (top right)
-              _buildCloseButton(),
-            ],
+    final isTablet = OrientationUtils.isTablet(context);
+
+    return RotatedBox(
+      key: ValueKey(state.captureMode),
+      quarterTurns: isTablet ? 3 : 0,
+      child: CameraAwesomeBuilder.custom(
+        saveConfig: saveConfig,
+        sensorConfig: SensorConfig.single(
+          sensor: Sensor.position(SensorPosition.back),
+          aspectRatio: CameraAspectRatios.ratio_16_9,
+        ),
+        enablePhysicalButton: true,
+        previewFit: CameraPreviewFit.cover,
+        previewAlignment: isTablet
+            ? Alignment.centerRight
+            : Alignment.topCenter,
+        onMediaCaptureEvent: (media) {
+          debugPrint(
+            '📸 Media Capture Event: status=${media.status}, isPicture=${media.isPicture}, isVideo=${media.isVideo}',
+          );
+          if (media.status == MediaCaptureStatus.success) {
+            if (media.isPicture) {
+              debugPrint('✅ Picture captured successfully');
+              _handleCapturedImage(media, state.currentMetadata);
+            } else if (media.isVideo) {
+              debugPrint('✅ Video captured successfully');
+              _handleCapturedVideo(media, state.currentMetadata);
+            }
+          } else if (media.status == MediaCaptureStatus.failure) {
+            debugPrint('❌ Camera capture FAILED: ${media.exception}');
+          } else if (media.status == MediaCaptureStatus.capturing) {
+            debugPrint('⏳ Capturing in progress...');
+          }
+        },
+        builder: (cameraState, preview) {
+          return cameraState.when(
+            onPreparingCamera: (prepState) => const Center(
+              child: CircularProgressIndicator(color: Colors.white),
+            ),
+            onPhotoMode: (photoState) =>
+                _buildCameraUI(photoState, state, preview),
+            onVideoMode: (videoState) =>
+                _buildCameraUI(videoState, state, preview),
+            onVideoRecordingMode: (recordingState) =>
+                _buildCameraUI(recordingState, state, preview),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildCameraUI(
+    CameraState cameraState,
+    app_state.CameraState appState,
+    AnalysisPreview preview,
+  ) {
+    return Stack(
+      children: [
+        // Top actions
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  AwesomeFlashButton(state: cameraState),
+                  const SizedBox(width: 12),
+                  AwesomeZoomSelector(state: cameraState),
+                  const Spacer(),
+                  if (cameraState is PhotoCameraState)
+                    AwesomeAspectRatioButton(state: cameraState),
+                  const SizedBox(width: 12),
+                  _buildCloseButton(),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
-      bottomActionsBuilder: (cameraState) => Padding(
-        padding: const EdgeInsets.only(
-          top: 16,
-          bottom: 24,
-          left: 24,
-          right: 24,
-        ),
-        child: Row(
-          children: [
-            // Switch camera button (left) - aligned to start
-            Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: AwesomeCameraSwitchButton(state: cameraState),
-              ),
+        // Bottom actions
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 16,
+              bottom: 24,
+              left: 24,
+              right: 24,
             ),
-            // Capture button (center)
-            AwesomeCaptureButton(state: cameraState),
-            // Done button (right) - aligned to end
-            Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: _buildDoneButton(state),
-              ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: AwesomeCameraSwitchButton(state: cameraState),
+                  ),
+                ),
+                AwesomeCaptureButton(state: cameraState),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: _buildDoneButton(appState, cameraState),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-      onMediaCaptureEvent: (media) {
-        // Check if capture was successful
-        debugPrint('📸 Media Capture Event: status=${media.status}, isPicture=${media.isPicture}, isVideo=${media.isVideo}');
-        if (media.status == MediaCaptureStatus.success) {
-          if (media.isPicture) {
-            debugPrint('✅ Picture captured successfully');
-            _handleCapturedImage(media, state.currentMetadata);
-          } else if (media.isVideo) {
-            debugPrint('✅ Video captured successfully');
-            _handleCapturedVideo(media, state.currentMetadata);
-          }
-        } else if (media.status == MediaCaptureStatus.failure) {
-          debugPrint('❌ Camera capture FAILED: ${media.exception}');
-        } else if (media.status == MediaCaptureStatus.capturing) {
-          debugPrint('⏳ Capturing in progress...');
-        }
-      },
+      ],
     );
   }
 
@@ -284,7 +348,9 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
               fileSizeBytes: bytes.length,
               metadata: metadata,
             );
-            debugPrint('✅ Image processed: ${image.fileName}, size=${bytes.length} bytes');
+            debugPrint(
+              '✅ Image processed: ${image.fileName}, size=${bytes.length} bytes',
+            );
             ref.read(cameraProvider.notifier).addCapturedMedia(image);
           } catch (e, stack) {
             debugPrint('❌ Error reading captured image: $e');
@@ -337,35 +403,51 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
   Widget _buildCloseButton() {
     return IconButton(
       icon: const Icon(Icons.close, color: Colors.white, size: 28),
-      onPressed: () => Navigator.pop(context),
+      onPressed: () {
+        if (_isClosing) {
+          return;
+        }
+        _isClosing = true;
+        Navigator.pop(context);
+      },
     );
   }
 
-  Widget _buildDoneButton(app_state.CameraState state) {
+  Widget _buildDoneButton(
+    app_state.CameraState state,
+    CameraState cameraState,
+  ) {
     final totalMediaCount =
         state.capturedImages.length + state.capturedVideos.length;
 
-    return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
-        foregroundColor: Colors.white,
-        disabledBackgroundColor: Colors.green.withValues(alpha: 0.5),
-        disabledForegroundColor: Colors.white70,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      ),
-      icon: const Icon(Icons.check, size: 20),
-      label: Text('Done ($totalMediaCount)'),
-      onPressed: totalMediaCount == 0
-          ? null
-          : () {
-              // Combine images and videos into unified medias list
-              final List<MediaEntity> medias = [
-                ...state.capturedImages,
-                ...state.capturedVideos,
-              ];
+    return AwesomeOrientedWidget(
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor: Colors.green.withValues(alpha: 0.5),
+          disabledForegroundColor: Colors.white70,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        ),
+        icon: const Icon(Icons.check, size: 20),
+        label: Text('$totalMediaCount'),
+        onPressed: totalMediaCount == 0
+            ? null
+            : () {
+                if (_isClosing) {
+                  return;
+                }
+                _isClosing = true;
 
-              Navigator.pop(context, {'medias': medias});
-            },
+                // Combine images and videos into unified medias list
+                final List<MediaEntity> medias = [
+                  ...state.capturedImages,
+                  ...state.capturedVideos,
+                ];
+
+                Navigator.pop(context, {'medias': medias});
+              },
+      ),
     );
   }
 
@@ -397,7 +479,13 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
           ),
           const SizedBox(height: 16),
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              if (_isClosing) {
+                return;
+              }
+              _isClosing = true;
+              Navigator.pop(context);
+            },
             child: const Text(
               'Cancel',
               style: TextStyle(color: Colors.white70),
@@ -434,7 +522,13 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
           ),
           const SizedBox(height: 24),
           ElevatedButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              if (_isClosing) {
+                return;
+              }
+              _isClosing = true;
+              Navigator.pop(context);
+            },
             child: const Text('Close'),
           ),
         ],
@@ -457,7 +551,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildModeButton(
-                'Photo',
+                '',
                 Icons.camera_alt,
                 state.captureMode == app_state.CaptureMode.photo,
                 () => ref
@@ -465,7 +559,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal> {
                     .setCaptureMode(app_state.CaptureMode.photo),
               ),
               _buildModeButton(
-                'Video',
+                '',
                 Icons.videocam,
                 state.captureMode == app_state.CaptureMode.video,
                 () => ref
