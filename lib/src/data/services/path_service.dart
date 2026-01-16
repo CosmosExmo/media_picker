@@ -7,7 +7,7 @@ import 'package:uuid/uuid.dart';
 class PathService {
   PathService._(); // Private constructor
 
-  static final _uuid = Uuid();
+  static const _uuid = Uuid();
 
   /// Generate a temporary file path with the given extension
   /// Returns an absolute path to a temporary file
@@ -52,14 +52,14 @@ class PathService {
   /// Check if a file exists at the given path
   static Future<bool> fileExists(String path) async {
     final file = File(path);
-    return await file.exists();
+    return file.existsSync();
   }
 
   /// Delete file at path if it exists
   static Future<void> deleteFile(String path) async {
     try {
       final file = File(path);
-      if (await file.exists()) {
+      if (file.existsSync()) {
         await file.delete();
       }
     } catch (e) {
@@ -71,7 +71,7 @@ class PathService {
   static Future<int?> getFileSize(String path) async {
     try {
       final file = File(path);
-      if (await file.exists()) {
+      if (file.existsSync()) {
         return await file.length();
       }
     } catch (e) {

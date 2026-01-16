@@ -14,7 +14,7 @@ abstract class MediaRepository {
   /// Get media from camera
   ///
   /// Supports images and videos only (documents not supported by camera).
-  /// Configuration through [options.cameraConfig].
+  /// Configuration through [MediaSelectionOptions.cameraConfig].
   ///
   /// Returns list of [MediaEntity] on success or [MediaFailure] on error
   Future<Either<MediaFailure, List<MediaEntity>>> getMediasFromCamera({
