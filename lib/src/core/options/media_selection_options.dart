@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../domain/entities/media_metadata_entity.dart';
 import 'camera_metadata_strategy.dart';
@@ -20,6 +21,9 @@ class MediaSelectionOptions {
   /// Compression (images only)
   final CompressionOptions? compressionOptions;
 
+  /// Orientations to restore when camera is closed
+  final List<DeviceOrientation>? themeOrientations;
+
   /// Camera configuration
   final CameraConfig? cameraConfig;
 
@@ -32,6 +36,7 @@ class MediaSelectionOptions {
     this.allowedVideoTypes = const ['mp4', 'mov', 'avi', 'mkv'],
     this.allowedDocumentTypes = const ['pdf', 'doc', 'docx', 'txt'],
     this.compressionOptions,
+    this.themeOrientations,
     this.cameraConfig,
   });
 
@@ -118,10 +123,10 @@ class CameraConfig {
   /// Check if overlay should be shown
   bool get shouldShowMetadataOverlay =>
       metadataStrategy?.when(
-        selectable: (_, __) => true,
+        selectable: (_, _) => true,
         sequential: (_) => false,
         shared: (_) => false,
-        hybrid: (_, __) => false,
+        hybrid: (_, _) => false,
       ) ??
       false;
 }
