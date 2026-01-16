@@ -32,7 +32,7 @@ dependencies:
   path_provider: ^2.1.5
   image_picker: ^1.1.2
   wolt_modal_sheet: ^0.11.0
-  camerawesome: ^2.1.0
+  camerawesome: ^2.5.0
 
   # Web
   file_picker: ^10.3.3
