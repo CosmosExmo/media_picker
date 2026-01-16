@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:camerawesome/camerawesome_plugin.dart' hide CaptureMode;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
@@ -126,6 +127,10 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
 
   @override
   void dispose() {
+    // Reset orientation to system defaults when leaving camera
+    SystemChrome.setPreferredOrientations(
+      widget.options.themeOrientations ?? [],
+    );
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -150,42 +155,44 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
             return _buildPermissionDenied();
           }
 
-          return Stack(
-            children: [
-              // Camera preview
-              Positioned.fill(child: _buildCameraPreview(state)),
+          return SafeArea(
+            child: Stack(
+              children: [
+                // Camera preview
+                Positioned.fill(child: _buildCameraPreview(state)),
 
-              // Metadata overlay (if enabled via cameraConfig)
-              // TODO: Implement CameraMetadataStrategy pattern matching for overlay
-              // For now, overlay is disabled pending full Strategy Pattern integration
+                // Metadata overlay (if enabled via cameraConfig)
+                // TODO: Implement CameraMetadataStrategy pattern matching for overlay
+                // For now, overlay is disabled pending full Strategy Pattern integration
 
-              // Mode toggle (if enabled and not photo-only mode)
-              if (widget.options.cameraConfig?.ui?.showModeToggle ?? true)
-                _buildModeToggle(state),
+                // Mode toggle (if enabled and not photo-only mode)
+                if (widget.options.cameraConfig?.ui?.showModeToggle ?? true)
+                  _buildModeToggle(state),
 
-              // Recording indicator (when recording video)
-              if (state.captureMode != app_state.CaptureMode.photo &&
-                  state.isRecording)
-                _buildRecordingIndicator(state),
+                // Recording indicator (when recording video)
+                if (state.captureMode != app_state.CaptureMode.photo &&
+                    state.isRecording)
+                  _buildRecordingIndicator(state),
 
-              // Camera roll (if visible)
-              if (state.showCameraRoll)
-                CameraRollWidget(
-                  images: state.capturedImages,
-                  videos: state.capturedVideos,
-                  onRemoveImage: (index) {
-                    final imageId = state.capturedImages[index].id;
-                    ref.read(cameraProvider.notifier).removeMedia(imageId);
-                  },
-                  onRemoveVideo: (index) {
-                    final videoId = state.capturedVideos[index].id;
-                    ref.read(cameraProvider.notifier).removeMedia(videoId);
-                  },
-                  onClose: () {
-                    ref.read(cameraProvider.notifier).toggleCameraRoll();
-                  },
-                ),
-            ],
+                // Camera roll (if visible)
+                if (state.showCameraRoll)
+                  CameraRollWidget(
+                    images: state.capturedImages,
+                    videos: state.capturedVideos,
+                    onRemoveImage: (index) {
+                      final imageId = state.capturedImages[index].id;
+                      ref.read(cameraProvider.notifier).removeMedia(imageId);
+                    },
+                    onRemoveVideo: (index) {
+                      final videoId = state.capturedVideos[index].id;
+                      ref.read(cameraProvider.notifier).removeMedia(videoId);
+                    },
+                    onClose: () {
+                      ref.read(cameraProvider.notifier).toggleCameraRoll();
+                    },
+                  ),
+              ],
+            ),
           );
         },
         loading: () =>
@@ -217,7 +224,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
 
     return RotatedBox(
       key: ValueKey(state.captureMode),
-      quarterTurns: isTablet ? 3 : 0,
+      quarterTurns: isTablet && !Platform.isAndroid ? 3 : 0,
       child: CameraAwesomeBuilder.custom(
         saveConfig: saveConfig,
         sensorConfig: SensorConfig.single(
@@ -226,7 +233,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
         ),
         enablePhysicalButton: true,
         previewFit: CameraPreviewFit.cover,
-        previewAlignment: isTablet
+        previewAlignment: isTablet && !Platform.isAndroid
             ? Alignment.centerRight
             : Alignment.topCenter,
         onMediaCaptureEvent: (media) {
@@ -432,7 +439,7 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
         icon: const Icon(Icons.check, size: 20),
         label: Text('$totalMediaCount'),
         onPressed: totalMediaCount == 0
-            ? null
+            ? () => Navigator.pop(context)
             : () {
                 if (_isClosing) {
                   return;
