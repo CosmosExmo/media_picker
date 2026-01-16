@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
 
@@ -27,18 +25,19 @@ abstract final class OrientationUtils {
     NativeDeviceOrientation orientation,
     BuildContext context,
   ) {
-    // Only Android tablets need mapping
-    if (!Platform.isAndroid || !isTablet(context)) {
-      return orientation;
-    }
+// Only Android tablets need mapping
+    // if (!Platform.isAndroid || !isTablet(context)) {
+    //   return orientation;
+    // }
 
-    return switch (orientation) {
-      NativeDeviceOrientation.portraitUp => NativeDeviceOrientation.landscapeLeft,
-      NativeDeviceOrientation.portraitDown => NativeDeviceOrientation.landscapeRight,
-      NativeDeviceOrientation.landscapeLeft => NativeDeviceOrientation.portraitDown,
-      NativeDeviceOrientation.landscapeRight => NativeDeviceOrientation.portraitUp,
-      _ => orientation,
-    };
+    // return switch (orientation) {
+    //   NativeDeviceOrientation.portraitUp => NativeDeviceOrientation.landscapeLeft,
+    //   NativeDeviceOrientation.portraitDown => NativeDeviceOrientation.landscapeRight,
+    //   NativeDeviceOrientation.landscapeLeft => NativeDeviceOrientation.portraitDown,
+    //   NativeDeviceOrientation.landscapeRight => NativeDeviceOrientation.portraitUp,
+    //   _ => orientation,
+    // };
+    return orientation;
   }
 
   /// Calculate rotation quarter turns for RotatedBox widget
