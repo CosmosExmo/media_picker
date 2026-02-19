@@ -224,15 +224,18 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
 
     return RotatedBox(
       key: ValueKey(state.captureMode),
-      quarterTurns: isTablet && !Platform.isAndroid ? 3 : 0,
+      quarterTurns: Platform.isIOS && isTablet ? 3 : 0,
       child: CameraAwesomeBuilder.custom(
+        previewContentRotation: Platform.isAndroid && isTablet ? 3 : 0,
         saveConfig: saveConfig,
         sensorConfig: SensorConfig.single(
           sensor: Sensor.position(SensorPosition.back),
           aspectRatio: CameraAspectRatios.ratio_16_9,
         ),
         enablePhysicalButton: true,
-        previewFit: CameraPreviewFit.cover,
+        previewFit: Platform.isIOS
+            ? CameraPreviewFit.cover
+            : CameraPreviewFit.contain,
         previewAlignment: isTablet && !Platform.isAndroid
             ? Alignment.centerRight
             : Alignment.topCenter,
@@ -276,63 +279,69 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
     app_state.CameraState appState,
     AnalysisPreview preview,
   ) {
-    return Stack(
-      children: [
-        // Top actions
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: SafeArea(
+    return RotatedBox(
+      quarterTurns: Platform.isAndroid ? 3 : 0,
+      child: Stack(
+        children: [
+          // Top actions
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: Row(
+                  children: [
+                    AwesomeFlashButton(state: cameraState),
+                    const SizedBox(width: 12),
+                    AwesomeZoomSelector(state: cameraState),
+                    const Spacer(),
+                    if (cameraState is PhotoCameraState)
+                      AwesomeAspectRatioButton(state: cameraState),
+                    const SizedBox(width: 12),
+                    _buildCloseButton(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          // Bottom actions
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.only(
+                top: 16,
+                bottom: 24,
+                left: 24,
+                right: 24,
+              ),
               child: Row(
                 children: [
-                  AwesomeFlashButton(state: cameraState),
-                  const SizedBox(width: 12),
-                  AwesomeZoomSelector(state: cameraState),
-                  const Spacer(),
-                  if (cameraState is PhotoCameraState)
-                    AwesomeAspectRatioButton(state: cameraState),
-                  const SizedBox(width: 12),
-                  _buildCloseButton(),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AwesomeCameraSwitchButton(state: cameraState),
+                    ),
+                  ),
+                  AwesomeCaptureButton(state: cameraState),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: _buildDoneButton(appState, cameraState),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-        ),
-        // Bottom actions
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 16,
-              bottom: 24,
-              left: 24,
-              right: 24,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: AwesomeCameraSwitchButton(state: cameraState),
-                  ),
-                ),
-                AwesomeCaptureButton(state: cameraState),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: _buildDoneButton(appState, cameraState),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
