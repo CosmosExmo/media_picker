@@ -222,11 +222,15 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
 
     final isTablet = OrientationUtils.isTablet(context);
 
+    final isAndroidTablet = Platform.isAndroid && isTablet;
+
+    final isIosTablet = Platform.isIOS && isTablet;
+
     return RotatedBox(
       key: ValueKey(state.captureMode),
-      quarterTurns: Platform.isIOS && isTablet ? 3 : 0,
+      quarterTurns: isIosTablet ? 3 : 0,
       child: CameraAwesomeBuilder.custom(
-        previewContentRotation: Platform.isAndroid && isTablet ? 3 : 0,
+        previewContentRotation: isAndroidTablet ? 3 : 0,
         saveConfig: saveConfig,
         sensorConfig: SensorConfig.single(
           sensor: Sensor.position(SensorPosition.back),
@@ -279,8 +283,12 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
     app_state.CameraState appState,
     AnalysisPreview preview,
   ) {
+    final isTablet = OrientationUtils.isTablet(context);
+
+    final isAndroidTablet = Platform.isAndroid && isTablet;
+
     return RotatedBox(
-      quarterTurns: Platform.isAndroid ? 3 : 0,
+      quarterTurns: isAndroidTablet ? 3 : 0,
       child: Stack(
         children: [
           // Top actions
