@@ -1,3 +1,4 @@
+import 'package:camerawesome/pigeon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,6 +19,9 @@ class MediaSelectionOptions {
   final List<String> allowedVideoTypes;
   final List<String> allowedDocumentTypes;
 
+  /// Video Options
+  final VideoOptions? videoOptions;
+
   /// Compression (images only)
   final CompressionOptions? compressionOptions;
 
@@ -35,6 +39,7 @@ class MediaSelectionOptions {
     this.allowedImageTypes = const ['jpg', 'jpeg', 'png', 'heic', 'webp'],
     this.allowedVideoTypes = const ['mp4', 'mov', 'avi', 'mkv'],
     this.allowedDocumentTypes = const ['pdf', 'doc', 'docx', 'txt'],
+    this.videoOptions,
     this.compressionOptions,
     this.themeOrientations,
     this.cameraConfig,
@@ -44,13 +49,12 @@ class MediaSelectionOptions {
   factory MediaSelectionOptions.imagesOnly({
     int maxImages = 50,
     CompressionOptions? compressionOptions,
-  }) =>
-      MediaSelectionOptions(
-        maxImages: maxImages,
-        maxVideos: 0,
-        maxDocuments: 0,
-        compressionOptions: compressionOptions,
-      );
+  }) => MediaSelectionOptions(
+    maxImages: maxImages,
+    maxVideos: 0,
+    maxDocuments: 0,
+    compressionOptions: compressionOptions,
+  );
 
   factory MediaSelectionOptions.videosOnly({int maxVideos = 10}) =>
       MediaSelectionOptions(
@@ -95,30 +99,26 @@ class CameraConfig {
   // Preset factory constructors
   factory CameraConfig.standard() => const CameraConfig();
 
-  factory CameraConfig.inspection({
-    required List<String> labels,
-  }) =>
+  factory CameraConfig.inspection({required List<String> labels}) =>
       CameraConfig(
         metadataStrategy: CameraMetadataStrategy.selectable(labels: labels),
       );
 
   factory CameraConfig.withSharedMetadata({
     required MediaMetadataEntity metadata,
-  }) =>
-      CameraConfig(
-        metadataStrategy: CameraMetadataStrategy.shared(metadata: metadata),
-      );
+  }) => CameraConfig(
+    metadataStrategy: CameraMetadataStrategy.shared(metadata: metadata),
+  );
 
   factory CameraConfig.sequentialWithFallback({
     required List<MediaMetadataEntity> sequence,
     required MediaMetadataEntity fallback,
-  }) =>
-      CameraConfig(
-        metadataStrategy: CameraMetadataStrategy.hybrid(
-          sequence: sequence,
-          fallback: fallback,
-        ),
-      );
+  }) => CameraConfig(
+    metadataStrategy: CameraMetadataStrategy.hybrid(
+      sequence: sequence,
+      fallback: fallback,
+    ),
+  );
 
   /// Check if overlay should be shown
   bool get shouldShowMetadataOverlay =>
@@ -149,16 +149,7 @@ class CameraUI {
 }
 
 /// Camera capture mode
-enum CaptureMode {
-  photo,
-  video,
-  both,
-}
+enum CaptureMode { photo, video, both }
 
 /// Video quality settings
-enum VideoQuality {
-  low,
-  medium,
-  high,
-  veryHigh,
-}
+enum VideoQuality { low, medium, high, veryHigh }
