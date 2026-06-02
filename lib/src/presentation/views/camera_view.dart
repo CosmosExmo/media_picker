@@ -216,8 +216,12 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
     // Determine SaveConfig based on capture mode
     final SaveConfig saveConfig = switch (state.captureMode) {
       app_state.CaptureMode.photo => SaveConfig.photo(),
-      app_state.CaptureMode.video => SaveConfig.video(),
-      app_state.CaptureMode.both => SaveConfig.photoAndVideo(),
+      app_state.CaptureMode.video => SaveConfig.video(
+        videoOptions: widget.options.videoOptions,
+      ),
+      app_state.CaptureMode.both => SaveConfig.photoAndVideo(
+        videoOptions: widget.options.videoOptions,
+      ),
     };
 
     final isTablet = OrientationUtils.isTablet(context);
