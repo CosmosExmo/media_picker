@@ -11,6 +11,9 @@ library;
 // Re-export Dartz Either for functional error handling
 export 'package:dartz/dartz.dart' show Either, Left, Right, left, right;
 
+// CameraAwesome re-exports
+export 'package:camerawesome/pigeon.dart';
+
 /// Main entry point - Static facade for media operations (recommended for most users)
 export 'src/core/media_picker.dart';
 // Core Options
