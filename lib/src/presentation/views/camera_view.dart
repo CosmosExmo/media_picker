@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camerawesome/camerawesome_plugin.dart' hide CaptureMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
@@ -449,34 +450,82 @@ class _CameraViewInternalState extends ConsumerState<_CameraViewInternal>
         state.capturedImages.length + state.capturedVideos.length;
 
     return AwesomeOrientedWidget(
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.green,
-          foregroundColor: Colors.white,
-          disabledBackgroundColor: Colors.green.withValues(alpha: 0.5),
-          disabledForegroundColor: Colors.white70,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        ),
-        icon: const Icon(Icons.check, size: 20),
-        label: Text('$totalMediaCount'),
-        onPressed: totalMediaCount == 0
-            ? () => Navigator.pop(context)
-            : () {
-                if (_isClosing) {
-                  return;
-                }
-                _isClosing = true;
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          // Hint tooltip appears only after at least one media is captured,
+          // nudging the user to save instead of leaving without confirming.
+          if (totalMediaCount > 0) ...[
+            _buildSaveAndExitTooltip(),
+            const SizedBox(height: 8),
+          ],
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+              disabledBackgroundColor: Colors.green.withValues(alpha: 0.5),
+              disabledForegroundColor: Colors.white70,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            ),
+            icon: const Icon(Icons.check, size: 20),
+            label: Text('$totalMediaCount'),
+            onPressed: totalMediaCount == 0
+                ? () => Navigator.pop(context)
+                : () {
+                    if (_isClosing) {
+                      return;
+                    }
+                    _isClosing = true;
 
-                // Combine images and videos into unified medias list
-                final List<MediaEntity> medias = [
-                  ...state.capturedImages,
-                  ...state.capturedVideos,
-                ];
+                    // Combine images and videos into unified medias list
+                    final List<MediaEntity> medias = [
+                      ...state.capturedImages,
+                      ...state.capturedVideos,
+                    ];
 
-                Navigator.pop(context, {'medias': medias});
-              },
+                    Navigator.pop(context, {'medias': medias});
+                  },
+          ),
+        ],
       ),
     );
+  }
+
+  /// Animated "Kaydet ve Çık" hint bubble shown above the green done button.
+  ///
+  /// Uses a lightweight, continuously looping scale (pulse) animation to draw
+  /// attention without affecting camera capture performance.
+  Widget _buildSaveAndExitTooltip() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: const Text(
+        'Kaydet ve Çık',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    )
+        .animate(onPlay: (controller) => controller.repeat(reverse: true))
+        .scaleXY(
+          begin: 1.0,
+          end: 1.08,
+          duration: 900.ms,
+          curve: Curves.easeInOut,
+        );
   }
 
   Widget _buildPermissionDenied() {
