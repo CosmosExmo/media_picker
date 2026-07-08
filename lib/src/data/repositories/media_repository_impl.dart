@@ -82,11 +82,17 @@ class MediaRepositoryImpl implements MediaRepository {
         );
       }
 
-      // Calculate total limit
-      final totalLimit = options.maxTotal ??
-          ((options.maxImages ?? 0) + (options.maxVideos ?? 0));
+      // Calculate total limit; null means unlimited (both limits null)
+      final int? totalLimit;
+      if (options.maxTotal != null) {
+        totalLimit = options.maxTotal;
+      } else if (options.maxImages == null && options.maxVideos == null) {
+        totalLimit = null;
+      } else {
+        totalLimit = (options.maxImages ?? 0) + (options.maxVideos ?? 0);
+      }
 
-      if (totalLimit <= 0) {
+      if (totalLimit != null && totalLimit <= 0) {
         return left(
           const MediaFailure.galleryError(
             'At least one of maxImages or maxVideos must be greater than 0.',

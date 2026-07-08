@@ -24,8 +24,9 @@ abstract class GalleryDataSource {
 
   /// Pick mixed media (images and videos) from gallery
   ///
-  /// [maxItems] Maximum total number of media items that can be selected
+  /// [maxItems] Maximum total number of media items that can be selected,
+  /// or null for no limit (the OS picker may still enforce its own cap)
   /// Returns list of [XFile] containing selected media (images and/or videos)
   /// Throws exception if picking fails
-  Future<List<XFile>> pickMixedMedia({required int maxItems});
+  Future<List<XFile>> pickMixedMedia({required int? maxItems});
 }

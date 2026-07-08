@@ -21,7 +21,6 @@ GetMediasFromCameraUsecase getMediasFromCameraUsecase(Ref ref) {
 GetMediasFromGalleryUsecase getMediasFromGalleryUsecase(Ref ref) {
   return GetMediasFromGalleryUsecase(
     ref.watch(mediaRepositoryProvider),
-    ref.watch(permissionRepositoryProvider),
   );
 }
 

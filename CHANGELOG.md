@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.8] - 2026-07-09
+
+### 🔒 Google Play Photo and Video Permissions Policy Compliance
+
+- **Android Photo Picker enabled**: gallery picking now uses the system Photo
+  Picker (`useAndroidPhotoPicker = true`), which runs out-of-process and needs
+  no `READ_MEDIA_IMAGES` / `READ_MEDIA_VIDEO` permission. Devices without
+  Photo Picker support fall back to the legacy intent automatically.
+- **Removed `Permission.photos` gate from the gallery flow**: neither the
+  Android Photo Picker nor iOS PHPicker requires a runtime photo permission.
+  Consumer apps can now drop `READ_MEDIA_IMAGES` / `READ_MEDIA_VIDEO` from
+  their manifests entirely.
+- **`maxImages`/`maxVideos` null = unlimited now works for gallery**: passing
+  null limits no longer fails with "At least one of maxImages or maxVideos
+  must be greater than 0"; the limit is simply omitted (the OS picker may
+  still enforce its own cap, e.g. `MediaStore.getPickImagesMaxLimit()`).
+
 ## [1.0.0] - 2025-12-20
 
 ### 🎉 Initial Release - Unified Media API
