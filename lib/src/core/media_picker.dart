@@ -210,7 +210,6 @@ class MediaPicker {
     final galleryDataSource = GalleryDataSourceImpl(imagePicker: ImagePicker());
     const filePickerDataSource = FilePickerDataSourceImpl();
     final compressionDataSource = CompressionDataSourceImpl(compressionOptions);
-    const permissionDataSource = PermissionDataSourceImpl();
 
     // Create mappers
     const imageMapper = ImageMapper();
@@ -227,15 +226,8 @@ class MediaPicker {
       documentMapper: documentMapper,
     );
 
-    const permissionRepository = PermissionRepositoryImpl(
-      permissionDataSource: permissionDataSource,
-    );
-
     // Create use case
-    return GetMediasFromGalleryUsecase(
-      mediaRepository,
-      permissionRepository,
-    );
+    return GetMediasFromGalleryUsecase(mediaRepository);
   }
 
   /// Create GetMediasFromFilesUsecase with all dependencies

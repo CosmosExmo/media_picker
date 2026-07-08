@@ -1,4 +1,6 @@
 import 'package:image_picker/image_picker.dart';
+import 'package:image_picker_android/image_picker_android.dart';
+import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../models/image_dto.dart';
@@ -12,7 +14,22 @@ class GalleryDataSourceImpl implements GalleryDataSource {
   final ImagePicker _imagePicker;
 
   GalleryDataSourceImpl({ImagePicker? imagePicker})
-      : _imagePicker = imagePicker ?? ImagePicker();
+      : _imagePicker = imagePicker ?? ImagePicker() {
+    _enableAndroidPhotoPicker();
+  }
+
+  /// Use the Android system Photo Picker instead of ACTION_GET_CONTENT.
+  ///
+  /// The Photo Picker runs out-of-process, so no READ_MEDIA_IMAGES /
+  /// READ_MEDIA_VIDEO permission is needed — required for Google Play's
+  /// Photo and Video Permissions policy. On devices without Photo Picker
+  /// support image_picker falls back to the old intent automatically.
+  static void _enableAndroidPhotoPicker() {
+    final platform = ImagePickerPlatform.instance;
+    if (platform is ImagePickerAndroid) {
+      platform.useAndroidPhotoPicker = true;
+    }
+  }
 
   @override
   Future<List<ImageDto>> pickImages(int maxImages) async {
@@ -43,7 +60,7 @@ class GalleryDataSourceImpl implements GalleryDataSource {
   ///
   /// This is the unified method for picking images and/or videos together
   @override
-  Future<List<XFile>> pickMixedMedia({required int maxItems}) async {
+  Future<List<XFile>> pickMixedMedia({required int? maxItems}) async {
     try {
       // Use pickMultipleMedia to allow both images and videos
       final List<XFile> files = await _imagePicker.pickMultipleMedia(
