@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:uuid/uuid.dart';
 
 import '../../models/image_dto.dart';
@@ -19,38 +20,39 @@ class FilePickerDataSourceImpl implements FilePickerDataSource {
     required List<String> allowedExtensions,
   }) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
+      // file_picker 12: pickFiles is static, multi-select by default, and
+      // returns the files directly instead of a nullable FilePickerResult.
+      final files = await FilePicker.pickFiles(
         type: FileType.custom,
         allowedExtensions: allowedExtensions,
-        allowMultiple: true,
-        withData: true, // Read file bytes (important for web)
       );
 
-      if (result == null || result.files.isEmpty) {
+      if (files.isEmpty) {
         return []; // User cancelled or no files selected
       }
 
       final List<ImageDto> dtos = [];
 
-      for (final file in result.files) {
+      for (final file in files) {
+        // file_picker 12 dropped PlatformFile.extension — derive it from the name.
+        final extension = extensionOf(file.name) ?? 'unknown';
+
         // Get the file path (create temp file from bytes if on web)
         final String filePath;
         if (file.path != null && file.path!.isNotEmpty) {
           filePath = file.path!;
-        } else if (file.bytes != null) {
-          // Web: Save bytes to temp file
-          final extension = file.extension ?? 'unknown';
-          filePath = await PathService.generateTempFilePath(extension: extension);
-          await File(filePath).writeAsBytes(file.bytes!);
         } else {
-          continue; // Skip files without path or bytes
+          // Web: no path — materialize the bytes into a temp file.
+          // file_picker 12 deprecated `withData`; bytes are read on demand.
+          filePath = await PathService.generateTempFilePath(extension: extension);
+          await File(filePath).writeAsBytes(await file.readAsBytes());
         }
 
         dtos.add(
           ImageDto(
             id: const Uuid().v4(),
             path: filePath,
-            extension: file.extension ?? 'unknown',
+            extension: extension,
             fileName: file.name,
           ),
         );
@@ -62,30 +64,15 @@ class FilePickerDataSourceImpl implements FilePickerDataSource {
     }
   }
 
-  /// Pick mixed media files (images/videos/documents)
-  ///
-  /// Returns a list of PlatformFile objects that can be converted to appropriate DTOs
-  Future<List<PlatformFile>> pickMixedMediaFiles({
-    List<String>? allowedExtensions,
-  }) async {
-    try {
-      final result = await FilePicker.platform.pickFiles(
-        type: allowedExtensions != null
-            ? FileType.custom
-            : FileType.any,
-        allowedExtensions: allowedExtensions,
-        allowMultiple: true,
-        withData: true, // Read file bytes (important for web)
-      );
-
-      if (result == null || result.files.isEmpty) {
-        return []; // User cancelled or no files selected
-      }
-
-      return result.files;
-    } catch (e) {
-      throw FilePickerException('Failed to pick media files: $e');
+  /// Extension without the dot, or null when the name carries none.
+  /// Leading-dot names ("`.gitignore`") count as extensionless.
+  @visibleForTesting
+  static String? extensionOf(String name) {
+    final dot = name.lastIndexOf('.');
+    if (dot <= 0 || dot == name.length - 1) {
+      return null;
     }
+    return name.substring(dot + 1);
   }
 }
 
