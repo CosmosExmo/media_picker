@@ -52,7 +52,7 @@ abstract class _$CameraNotifier extends $AsyncNotifier<CameraState> {
   FutureOr<CameraState> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<CameraState>, CameraState>;
     final element =
         ref.element
@@ -62,6 +62,6 @@ abstract class _$CameraNotifier extends $AsyncNotifier<CameraState> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

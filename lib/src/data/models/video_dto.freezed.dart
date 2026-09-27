@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'video_dto.dart';
@@ -9,6 +9,7 @@ part of 'video_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $VideoDtoCopyWith<VideoDto> get copyWith => _$VideoDtoCopyWithImpl<VideoDto>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate)&&const DeepCollectionEquality().equals(other.metadata, metadata));
+  final _this = this as VideoDto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoDto&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.durationMs, _this.durationMs) || other.durationMs == _this.durationMs)&&(identical(other.width, _this.width) || other.width == _this.width)&&(identical(other.height, _this.height) || other.height == _this.height)&&(identical(other.fileSizeBytes, _this.fileSizeBytes) || other.fileSizeBytes == _this.fileSizeBytes)&&(identical(other.thumbnailPath, _this.thumbnailPath) || other.thumbnailPath == _this.thumbnailPath)&&(identical(other.frameRate, _this.frameRate) || other.frameRate == _this.frameRate)&&const DeepCollectionEquality().equals(other.metadata, _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,fileSizeBytes,thumbnailPath,frameRate,const DeepCollectionEquality().hash(metadata));
+int get hashCode {
+  final _this = this as VideoDto;
+  return Object.hash(runtimeType,_this.id,_this.path,_this.extension,_this.fileName,_this.durationMs,_this.width,_this.height,_this.fileSizeBytes,_this.thumbnailPath,_this.frameRate,const DeepCollectionEquality().hash(_this.metadata));
+}
 
 @override
 String toString() {
-  return 'VideoDto(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, thumbnailPath: $thumbnailPath, frameRate: $frameRate, metadata: $metadata)';
+  final _this = this as VideoDto;
+  return 'VideoDto(id: ${_this.id}, path: ${_this.path}, extension: ${_this.extension}, fileName: ${_this.fileName}, durationMs: ${_this.durationMs}, width: ${_this.width}, height: ${_this.height}, fileSizeBytes: ${_this.fileSizeBytes}, thumbnailPath: ${_this.thumbnailPath}, frameRate: ${_this.frameRate}, metadata: ${_this.metadata})';
 }
 
 
@@ -63,7 +69,7 @@ class _$VideoDtoCopyWithImpl<$Res>
 /// Create a copy of VideoDto
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? path = null,Object? extension = null,Object? fileName = freezed,Object? durationMs = freezed,Object? width = freezed,Object? height = freezed,Object? fileSizeBytes = freezed,Object? thumbnailPath = freezed,Object? frameRate = freezed,Object? metadata = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VideoDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
 as String,extension: null == extension ? _self.extension : extension // ignore: cast_nullable_to_non_nullable
@@ -216,7 +222,7 @@ return $default(_that.id,_that.path,_that.extension,_that.fileName,_that.duratio
 
 
 class _VideoDto extends VideoDto {
-   _VideoDto({required this.id, required this.path, required this.extension, this.fileName, this.durationMs, this.width, this.height, this.fileSizeBytes, this.thumbnailPath, this.frameRate, final  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
+   _VideoDto({required this.id, required this.path, required this.extension, this.fileName, this.durationMs, this.width, this.height, this.fileSizeBytes, this.thumbnailPath, this.frameRate,  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
   
 
 @override final  String id;
@@ -249,16 +255,18 @@ _$VideoDtoCopyWith<_VideoDto> get copyWith => __$VideoDtoCopyWithImpl<_VideoDto>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate)&&const DeepCollectionEquality().equals(other._metadata, _metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate)&&const DeepCollectionEquality().equals(other.metadata, _metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,fileSizeBytes,thumbnailPath,frameRate,const DeepCollectionEquality().hash(_metadata));
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,fileSizeBytes,thumbnailPath,frameRate,const DeepCollectionEquality().hash(_metadata));
+}
 
 @override
 String toString() {
-  return 'VideoDto(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, thumbnailPath: $thumbnailPath, frameRate: $frameRate, metadata: $metadata)';
+    return 'VideoDto(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, thumbnailPath: $thumbnailPath, frameRate: $frameRate, metadata: $metadata)';
 }
 
 

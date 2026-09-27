@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'media_failure.dart';
@@ -9,6 +9,7 @@ part of 'media_failure.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$MediaFailure {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaFailure);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MediaFailure()';
+    return 'MediaFailure()';
 }
 
 
@@ -227,7 +228,7 @@ class _PermissionDenied implements MediaFailure {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PermissionDenied);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PermissionDenied);
 }
 
 
@@ -236,7 +237,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MediaFailure.permissionDenied()';
+    return 'MediaFailure.permissionDenied()';
 }
 
 
@@ -264,16 +265,18 @@ _$CameraErrorCopyWith<_CameraError> get copyWith => __$CameraErrorCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraError&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraError&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.cameraError(message: $message)';
+    return 'MediaFailure.cameraError(message: $message)';
 }
 
 
@@ -330,16 +333,18 @@ _$GalleryErrorCopyWith<_GalleryError> get copyWith => __$GalleryErrorCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GalleryError&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GalleryError&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.galleryError(message: $message)';
+    return 'MediaFailure.galleryError(message: $message)';
 }
 
 
@@ -396,16 +401,18 @@ _$FilePickerErrorCopyWith<_FilePickerError> get copyWith => __$FilePickerErrorCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FilePickerError&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FilePickerError&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.filePickerError(message: $message)';
+    return 'MediaFailure.filePickerError(message: $message)';
 }
 
 
@@ -462,16 +469,18 @@ _$CompressionFailedCopyWith<_CompressionFailed> get copyWith => __$CompressionFa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CompressionFailed&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CompressionFailed&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.compressionFailed(message: $message)';
+    return 'MediaFailure.compressionFailed(message: $message)';
 }
 
 
@@ -523,7 +532,7 @@ class _NoCameraAvailable implements MediaFailure {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoCameraAvailable);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoCameraAvailable);
 }
 
 
@@ -532,7 +541,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MediaFailure.noCameraAvailable()';
+    return 'MediaFailure.noCameraAvailable()';
 }
 
 
@@ -560,16 +569,18 @@ _$VideoRecordingFailedCopyWith<_VideoRecordingFailed> get copyWith => __$VideoRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoRecordingFailed&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoRecordingFailed&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.videoRecordingFailed(message: $message)';
+    return 'MediaFailure.videoRecordingFailed(message: $message)';
 }
 
 
@@ -626,16 +637,18 @@ _$UnknownCopyWith<_Unknown> get copyWith => __$UnknownCopyWithImpl<_Unknown>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unknown&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unknown&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'MediaFailure.unknown(message: $message)';
+    return 'MediaFailure.unknown(message: $message)';
 }
 
 
@@ -687,7 +700,7 @@ class _Cancelled implements MediaFailure {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cancelled);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cancelled);
 }
 
 
@@ -696,7 +709,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MediaFailure.cancelled()';
+    return 'MediaFailure.cancelled()';
 }
 
 

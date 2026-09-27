@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_dto.dart';
@@ -9,6 +9,7 @@ part of 'image_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $ImageDtoCopyWith<ImageDto> get copyWith => _$ImageDtoCopyWithImpl<ImageDto>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&const DeepCollectionEquality().equals(other.metadata, metadata));
+  final _this = this as ImageDto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageDto&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.width, _this.width) || other.width == _this.width)&&(identical(other.height, _this.height) || other.height == _this.height)&&(identical(other.fileSizeBytes, _this.fileSizeBytes) || other.fileSizeBytes == _this.fileSizeBytes)&&const DeepCollectionEquality().equals(other.metadata, _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,width,height,fileSizeBytes,const DeepCollectionEquality().hash(metadata));
+int get hashCode {
+  final _this = this as ImageDto;
+  return Object.hash(runtimeType,_this.id,_this.path,_this.extension,_this.fileName,_this.width,_this.height,_this.fileSizeBytes,const DeepCollectionEquality().hash(_this.metadata));
+}
 
 @override
 String toString() {
-  return 'ImageDto(id: $id, path: $path, extension: $extension, fileName: $fileName, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
+  final _this = this as ImageDto;
+  return 'ImageDto(id: ${_this.id}, path: ${_this.path}, extension: ${_this.extension}, fileName: ${_this.fileName}, width: ${_this.width}, height: ${_this.height}, fileSizeBytes: ${_this.fileSizeBytes}, metadata: ${_this.metadata})';
 }
 
 
@@ -63,7 +69,7 @@ class _$ImageDtoCopyWithImpl<$Res>
 /// Create a copy of ImageDto
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? path = null,Object? extension = null,Object? fileName = freezed,Object? width = freezed,Object? height = freezed,Object? fileSizeBytes = freezed,Object? metadata = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ImageDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
 as String,extension: null == extension ? _self.extension : extension // ignore: cast_nullable_to_non_nullable
@@ -213,7 +219,7 @@ return $default(_that.id,_that.path,_that.extension,_that.fileName,_that.width,_
 
 
 class _ImageDto extends ImageDto {
-   _ImageDto({required this.id, required this.path, required this.extension, this.fileName, this.width, this.height, this.fileSizeBytes, final  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
+   _ImageDto({required this.id, required this.path, required this.extension, this.fileName, this.width, this.height, this.fileSizeBytes,  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
   
 
 @override final  String id;
@@ -243,16 +249,18 @@ _$ImageDtoCopyWith<_ImageDto> get copyWith => __$ImageDtoCopyWithImpl<_ImageDto>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&const DeepCollectionEquality().equals(other._metadata, _metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&const DeepCollectionEquality().equals(other.metadata, _metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,width,height,fileSizeBytes,const DeepCollectionEquality().hash(_metadata));
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,width,height,fileSizeBytes,const DeepCollectionEquality().hash(_metadata));
+}
 
 @override
 String toString() {
-  return 'ImageDto(id: $id, path: $path, extension: $extension, fileName: $fileName, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
+    return 'ImageDto(id: $id, path: $path, extension: $extension, fileName: $fileName, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'camera_metadata_strategy.dart';
@@ -9,6 +9,7 @@ part of 'camera_metadata_strategy.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$CameraMetadataStrategy {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraMetadataStrategy);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraMetadataStrategy);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CameraMetadataStrategy()';
+    return 'CameraMetadataStrategy()';
 }
 
 
@@ -187,7 +188,7 @@ return hybrid(_that.sequence,_that.fallback);case _:
 
 
 class SelectableMetadataStrategy implements CameraMetadataStrategy {
-  const SelectableMetadataStrategy({required final  List<String> labels, this.metadataBuilder}): _labels = labels;
+  const SelectableMetadataStrategy({required  List<String> labels, this.metadataBuilder}): _labels = labels;
   
 
  final  List<String> _labels;
@@ -209,16 +210,18 @@ $SelectableMetadataStrategyCopyWith<SelectableMetadataStrategy> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SelectableMetadataStrategy&&const DeepCollectionEquality().equals(other._labels, _labels)&&(identical(other.metadataBuilder, metadataBuilder) || other.metadataBuilder == metadataBuilder));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SelectableMetadataStrategy&&const DeepCollectionEquality().equals(other.labels, _labels)&&(identical(other.metadataBuilder, metadataBuilder) || other.metadataBuilder == metadataBuilder));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_labels),metadataBuilder);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_labels),metadataBuilder);
+}
 
 @override
 String toString() {
-  return 'CameraMetadataStrategy.selectable(labels: $labels, metadataBuilder: $metadataBuilder)';
+    return 'CameraMetadataStrategy.selectable(labels: $labels, metadataBuilder: $metadataBuilder)';
 }
 
 
@@ -261,7 +264,7 @@ as MediaMetadataEntity Function(String label, int index)?,
 
 
 class SequentialMetadataStrategy implements CameraMetadataStrategy {
-  const SequentialMetadataStrategy({required final  List<MediaMetadataEntity> sequence}): _sequence = sequence;
+  const SequentialMetadataStrategy({required  List<MediaMetadataEntity> sequence}): _sequence = sequence;
   
 
  final  List<MediaMetadataEntity> _sequence;
@@ -282,16 +285,18 @@ $SequentialMetadataStrategyCopyWith<SequentialMetadataStrategy> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SequentialMetadataStrategy&&const DeepCollectionEquality().equals(other._sequence, _sequence));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SequentialMetadataStrategy&&const DeepCollectionEquality().equals(other.sequence, _sequence));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sequence));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_sequence));
+}
 
 @override
 String toString() {
-  return 'CameraMetadataStrategy.sequential(sequence: $sequence)';
+    return 'CameraMetadataStrategy.sequential(sequence: $sequence)';
 }
 
 
@@ -348,16 +353,18 @@ $SharedMetadataStrategyCopyWith<SharedMetadataStrategy> get copyWith => _$Shared
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SharedMetadataStrategy&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SharedMetadataStrategy&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,metadata);
+}
 
 @override
 String toString() {
-  return 'CameraMetadataStrategy.shared(metadata: $metadata)';
+    return 'CameraMetadataStrategy.shared(metadata: $metadata)';
 }
 
 
@@ -408,7 +415,7 @@ $MediaMetadataEntityCopyWith<$Res> get metadata {
 
 
 class HybridMetadataStrategy implements CameraMetadataStrategy {
-  const HybridMetadataStrategy({required final  List<MediaMetadataEntity> sequence, required this.fallback}): _sequence = sequence;
+  const HybridMetadataStrategy({required  List<MediaMetadataEntity> sequence, required this.fallback}): _sequence = sequence;
   
 
  final  List<MediaMetadataEntity> _sequence;
@@ -430,16 +437,18 @@ $HybridMetadataStrategyCopyWith<HybridMetadataStrategy> get copyWith => _$Hybrid
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HybridMetadataStrategy&&const DeepCollectionEquality().equals(other._sequence, _sequence)&&(identical(other.fallback, fallback) || other.fallback == fallback));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is HybridMetadataStrategy&&const DeepCollectionEquality().equals(other.sequence, _sequence)&&(identical(other.fallback, fallback) || other.fallback == fallback));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sequence),fallback);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_sequence),fallback);
+}
 
 @override
 String toString() {
-  return 'CameraMetadataStrategy.hybrid(sequence: $sequence, fallback: $fallback)';
+    return 'CameraMetadataStrategy.hybrid(sequence: $sequence, fallback: $fallback)';
 }
 
 
