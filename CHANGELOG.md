@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   applies the Kotlin Gradle Plugin only when the app opts out of AGP 9's
   built-in Kotlin. Apps can now set `android.builtInKotlin=true`.
 - **file_picker 13** and **permission_handler 13** (win32 6 ecosystem).
+  `permission_handler_android` 14 requires consumer apps to compile against
+  Android API 37 (`compileSdk 37`).
 - **riverpod 3.4 / riverpod_annotation 4.0.7**, **freezed 4**: generated code
   regenerated. Consumers must drop any `dependency_overrides` that pin riverpod
   below 3.3 — the regenerated `runBuild` override no longer matches 3.2.x.
