@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'media_entity.dart';
@@ -9,6 +9,7 @@ part of 'media_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $MediaEntityCopyWith<MediaEntity> get copyWith => _$MediaEntityCopyWithImpl<Medi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  final _this = this as MediaEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.fileSizeBytes, _this.fileSizeBytes) || other.fileSizeBytes == _this.fileSizeBytes)&&(identical(other.metadata, _this.metadata) || other.metadata == _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,fileSizeBytes,metadata);
+int get hashCode {
+  final _this = this as MediaEntity;
+  return Object.hash(runtimeType,_this.id,_this.path,_this.extension,_this.fileName,_this.fileSizeBytes,_this.metadata);
+}
 
 @override
 String toString() {
-  return 'MediaEntity(id: $id, path: $path, extension: $extension, fileName: $fileName, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
+  final _this = this as MediaEntity;
+  return 'MediaEntity(id: ${_this.id}, path: ${_this.path}, extension: ${_this.extension}, fileName: ${_this.fileName}, fileSizeBytes: ${_this.fileSizeBytes}, metadata: ${_this.metadata})';
 }
 
 
@@ -251,16 +257,18 @@ $ImageMediaCopyWith<ImageMedia> get copyWith => _$ImageMediaCopyWithImpl<ImageMe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,width,height,fileSizeBytes,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,width,height,fileSizeBytes,metadata);
+}
 
 @override
 String toString() {
-  return 'MediaEntity.image(id: $id, path: $path, extension: $extension, fileName: $fileName, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
+    return 'MediaEntity.image(id: $id, path: $path, extension: $extension, fileName: $fileName, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, metadata: $metadata)';
 }
 
 
@@ -346,16 +354,18 @@ $VideoMediaCopyWith<VideoMedia> get copyWith => _$VideoMediaCopyWithImpl<VideoMe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,fileSizeBytes,thumbnailPath,frameRate,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,fileSizeBytes,thumbnailPath,frameRate,metadata);
+}
 
 @override
 String toString() {
-  return 'MediaEntity.video(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, thumbnailPath: $thumbnailPath, frameRate: $frameRate, metadata: $metadata)';
+    return 'MediaEntity.video(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, fileSizeBytes: $fileSizeBytes, thumbnailPath: $thumbnailPath, frameRate: $frameRate, metadata: $metadata)';
 }
 
 
@@ -441,16 +451,18 @@ $DocumentMediaCopyWith<DocumentMedia> get copyWith => _$DocumentMediaCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DocumentMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.pageCount, pageCount) || other.pageCount == pageCount)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.mimeType, mimeType) || other.mimeType == mimeType)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DocumentMedia&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.pageCount, pageCount) || other.pageCount == pageCount)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.mimeType, mimeType) || other.mimeType == mimeType)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,pageCount,fileSizeBytes,mimeType,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,pageCount,fileSizeBytes,mimeType,metadata);
+}
 
 @override
 String toString() {
-  return 'MediaEntity.document(id: $id, path: $path, extension: $extension, fileName: $fileName, pageCount: $pageCount, fileSizeBytes: $fileSizeBytes, mimeType: $mimeType, metadata: $metadata)';
+    return 'MediaEntity.document(id: $id, path: $path, extension: $extension, fileName: $fileName, pageCount: $pageCount, fileSizeBytes: $fileSizeBytes, mimeType: $mimeType, metadata: $metadata)';
 }
 
 

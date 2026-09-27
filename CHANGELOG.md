@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-09-27
+
+### ⬆️ Dependencies on latest
+
+- **camerawesome** now comes from the CosmosExmo fork (`2.5.0-cosmos.1`), which
+  applies the Kotlin Gradle Plugin only when the app opts out of AGP 9's
+  built-in Kotlin. Apps can now set `android.builtInKotlin=true`.
+- **file_picker 13** and **permission_handler 13** (win32 6 ecosystem).
+  `permission_handler_android` 14 requires consumer apps to compile against
+  Android API 37 (`compileSdk 37`).
+- **riverpod 3.4 / riverpod_annotation 4.0.7**, **freezed 4**: generated code
+  regenerated. Consumers must drop any `dependency_overrides` that pin riverpod
+  below 3.3 — the regenerated `runBuild` override no longer matches 3.2.x.
+- All other constraints raised to their current releases.
+
 ## [1.0.8] - 2026-07-09
 
 ### 🔒 Google Play Photo and Video Permissions Policy Compliance

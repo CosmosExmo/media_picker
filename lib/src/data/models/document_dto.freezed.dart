@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'document_dto.dart';
@@ -9,6 +9,7 @@ part of 'document_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $DocumentDtoCopyWith<DocumentDto> get copyWith => _$DocumentDtoCopyWithImpl<Docu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DocumentDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.pageCount, pageCount) || other.pageCount == pageCount)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.mimeType, mimeType) || other.mimeType == mimeType)&&const DeepCollectionEquality().equals(other.metadata, metadata));
+  final _this = this as DocumentDto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DocumentDto&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.pageCount, _this.pageCount) || other.pageCount == _this.pageCount)&&(identical(other.fileSizeBytes, _this.fileSizeBytes) || other.fileSizeBytes == _this.fileSizeBytes)&&(identical(other.mimeType, _this.mimeType) || other.mimeType == _this.mimeType)&&const DeepCollectionEquality().equals(other.metadata, _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,pageCount,fileSizeBytes,mimeType,const DeepCollectionEquality().hash(metadata));
+int get hashCode {
+  final _this = this as DocumentDto;
+  return Object.hash(runtimeType,_this.id,_this.path,_this.extension,_this.fileName,_this.pageCount,_this.fileSizeBytes,_this.mimeType,const DeepCollectionEquality().hash(_this.metadata));
+}
 
 @override
 String toString() {
-  return 'DocumentDto(id: $id, path: $path, extension: $extension, fileName: $fileName, pageCount: $pageCount, fileSizeBytes: $fileSizeBytes, mimeType: $mimeType, metadata: $metadata)';
+  final _this = this as DocumentDto;
+  return 'DocumentDto(id: ${_this.id}, path: ${_this.path}, extension: ${_this.extension}, fileName: ${_this.fileName}, pageCount: ${_this.pageCount}, fileSizeBytes: ${_this.fileSizeBytes}, mimeType: ${_this.mimeType}, metadata: ${_this.metadata})';
 }
 
 
@@ -63,7 +69,7 @@ class _$DocumentDtoCopyWithImpl<$Res>
 /// Create a copy of DocumentDto
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? path = null,Object? extension = null,Object? fileName = freezed,Object? pageCount = freezed,Object? fileSizeBytes = freezed,Object? mimeType = freezed,Object? metadata = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(DocumentDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
 as String,extension: null == extension ? _self.extension : extension // ignore: cast_nullable_to_non_nullable
@@ -213,7 +219,7 @@ return $default(_that.id,_that.path,_that.extension,_that.fileName,_that.pageCou
 
 
 class _DocumentDto extends DocumentDto {
-   _DocumentDto({required this.id, required this.path, required this.extension, this.fileName, this.pageCount, this.fileSizeBytes, this.mimeType, final  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
+   _DocumentDto({required this.id, required this.path, required this.extension, this.fileName, this.pageCount, this.fileSizeBytes, this.mimeType,  Map<String, dynamic>? metadata}): _metadata = metadata,super._();
   
 
 @override final  String id;
@@ -243,16 +249,18 @@ _$DocumentDtoCopyWith<_DocumentDto> get copyWith => __$DocumentDtoCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DocumentDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.pageCount, pageCount) || other.pageCount == pageCount)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.mimeType, mimeType) || other.mimeType == mimeType)&&const DeepCollectionEquality().equals(other._metadata, _metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DocumentDto&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.pageCount, pageCount) || other.pageCount == pageCount)&&(identical(other.fileSizeBytes, fileSizeBytes) || other.fileSizeBytes == fileSizeBytes)&&(identical(other.mimeType, mimeType) || other.mimeType == mimeType)&&const DeepCollectionEquality().equals(other.metadata, _metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,pageCount,fileSizeBytes,mimeType,const DeepCollectionEquality().hash(_metadata));
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,pageCount,fileSizeBytes,mimeType,const DeepCollectionEquality().hash(_metadata));
+}
 
 @override
 String toString() {
-  return 'DocumentDto(id: $id, path: $path, extension: $extension, fileName: $fileName, pageCount: $pageCount, fileSizeBytes: $fileSizeBytes, mimeType: $mimeType, metadata: $metadata)';
+    return 'DocumentDto(id: $id, path: $path, extension: $extension, fileName: $fileName, pageCount: $pageCount, fileSizeBytes: $fileSizeBytes, mimeType: $mimeType, metadata: $metadata)';
 }
 
 

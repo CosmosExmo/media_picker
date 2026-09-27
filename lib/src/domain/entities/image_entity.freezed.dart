@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_entity.dart';
@@ -9,6 +9,7 @@ part of 'image_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $ImageEntityCopyWith<ImageEntity> get copyWith => _$ImageEntityCopyWithImpl<Imag
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageEntity&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.path, path) || other.path == path)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  final _this = this as ImageEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&const DeepCollectionEquality().equals(other.data, _this.data)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.metadata, _this.metadata) || other.metadata == _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(data),extension,path,fileName,metadata);
+int get hashCode {
+  final _this = this as ImageEntity;
+  return Object.hash(runtimeType,_this.id,const DeepCollectionEquality().hash(_this.data),_this.extension,_this.path,_this.fileName,_this.metadata);
+}
 
 @override
 String toString() {
-  return 'ImageEntity(id: $id, data: $data, extension: $extension, path: $path, fileName: $fileName, metadata: $metadata)';
+  final _this = this as ImageEntity;
+  return 'ImageEntity(id: ${_this.id}, data: ${_this.data}, extension: ${_this.extension}, path: ${_this.path}, fileName: ${_this.fileName}, metadata: ${_this.metadata})';
 }
 
 
@@ -63,7 +69,7 @@ class _$ImageEntityCopyWithImpl<$Res>
 /// Create a copy of ImageEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? data = null,Object? extension = null,Object? path = null,Object? fileName = freezed,Object? metadata = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ImageEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as Uint8List,extension: null == extension ? _self.extension : extension // ignore: cast_nullable_to_non_nullable
@@ -243,16 +249,18 @@ _$ImageEntityCopyWith<_ImageEntity> get copyWith => __$ImageEntityCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageEntity&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.path, path) || other.path == path)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageEntity&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.path, path) || other.path == path)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(data),extension,path,fileName,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,id,const DeepCollectionEquality().hash(data),extension,path,fileName,metadata);
+}
 
 @override
 String toString() {
-  return 'ImageEntity(id: $id, data: $data, extension: $extension, path: $path, fileName: $fileName, metadata: $metadata)';
+    return 'ImageEntity(id: $id, data: $data, extension: $extension, path: $path, fileName: $fileName, metadata: $metadata)';
 }
 
 
@@ -321,16 +329,21 @@ $ImageMetadataEntityCopyWith<ImageMetadataEntity> get copyWith => _$ImageMetadat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other.customData, customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
+  final _this = this as ImageMetadataEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageMetadataEntity&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.capturedAt, _this.capturedAt) || other.capturedAt == _this.capturedAt)&&const DeepCollectionEquality().equals(other.customData, _this.customData)&&(identical(other.overlayImagePath, _this.overlayImagePath) || other.overlayImagePath == _this.overlayImagePath)&&(identical(other.overlayImageUrl, _this.overlayImageUrl) || other.overlayImageUrl == _this.overlayImageUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(customData),overlayImagePath,overlayImageUrl);
+int get hashCode {
+  final _this = this as ImageMetadataEntity;
+  return Object.hash(runtimeType,_this.title,_this.description,_this.capturedAt,const DeepCollectionEquality().hash(_this.customData),_this.overlayImagePath,_this.overlayImageUrl);
+}
 
 @override
 String toString() {
-  return 'ImageMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
+  final _this = this as ImageMetadataEntity;
+  return 'ImageMetadataEntity(title: ${_this.title}, description: ${_this.description}, capturedAt: ${_this.capturedAt}, customData: ${_this.customData}, overlayImagePath: ${_this.overlayImagePath}, overlayImageUrl: ${_this.overlayImageUrl})';
 }
 
 
@@ -359,7 +372,7 @@ class _$ImageMetadataEntityCopyWithImpl<$Res>
 /// Create a copy of ImageMetadataEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? capturedAt = freezed,Object? customData = freezed,Object? overlayImagePath = freezed,Object? overlayImageUrl = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ImageMetadataEntity(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,capturedAt: freezed == capturedAt ? _self.capturedAt : capturedAt // ignore: cast_nullable_to_non_nullable
@@ -507,7 +520,7 @@ return $default(_that.title,_that.description,_that.capturedAt,_that.customData,
 
 
 class _ImageMetadataEntity extends ImageMetadataEntity {
-   _ImageMetadataEntity({this.title, this.description, this.capturedAt, final  Map<String, dynamic>? customData, this.overlayImagePath, this.overlayImageUrl}): _customData = customData,super._();
+   _ImageMetadataEntity({this.title, this.description, this.capturedAt,  Map<String, dynamic>? customData, this.overlayImagePath, this.overlayImageUrl}): _customData = customData,super._();
   
 
 @override final  String? title;
@@ -535,16 +548,18 @@ _$ImageMetadataEntityCopyWith<_ImageMetadataEntity> get copyWith => __$ImageMeta
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other._customData, _customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other.customData, _customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(_customData),overlayImagePath,overlayImageUrl);
+int get hashCode {
+    return Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(_customData),overlayImagePath,overlayImageUrl);
+}
 
 @override
 String toString() {
-  return 'ImageMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
+    return 'ImageMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
 }
 
 

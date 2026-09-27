@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'video_entity.dart';
@@ -9,6 +9,7 @@ part of 'video_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $VideoEntityCopyWith<VideoEntity> get copyWith => _$VideoEntityCopyWithImpl<Vide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+  final _this = this as VideoEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.path, _this.path) || other.path == _this.path)&&(identical(other.extension, _this.extension) || other.extension == _this.extension)&&(identical(other.fileName, _this.fileName) || other.fileName == _this.fileName)&&(identical(other.durationMs, _this.durationMs) || other.durationMs == _this.durationMs)&&(identical(other.width, _this.width) || other.width == _this.width)&&(identical(other.height, _this.height) || other.height == _this.height)&&(identical(other.thumbnailPath, _this.thumbnailPath) || other.thumbnailPath == _this.thumbnailPath)&&(identical(other.metadata, _this.metadata) || other.metadata == _this.metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,thumbnailPath,metadata);
+int get hashCode {
+  final _this = this as VideoEntity;
+  return Object.hash(runtimeType,_this.id,_this.path,_this.extension,_this.fileName,_this.durationMs,_this.width,_this.height,_this.thumbnailPath,_this.metadata);
+}
 
 @override
 String toString() {
-  return 'VideoEntity(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, thumbnailPath: $thumbnailPath, metadata: $metadata)';
+  final _this = this as VideoEntity;
+  return 'VideoEntity(id: ${_this.id}, path: ${_this.path}, extension: ${_this.extension}, fileName: ${_this.fileName}, durationMs: ${_this.durationMs}, width: ${_this.width}, height: ${_this.height}, thumbnailPath: ${_this.thumbnailPath}, metadata: ${_this.metadata})';
 }
 
 
@@ -63,7 +69,7 @@ class _$VideoEntityCopyWithImpl<$Res>
 /// Create a copy of VideoEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? path = null,Object? extension = null,Object? fileName = freezed,Object? durationMs = freezed,Object? width = freezed,Object? height = freezed,Object? thumbnailPath = freezed,Object? metadata = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VideoEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
 as String,extension: null == extension ? _self.extension : extension // ignore: cast_nullable_to_non_nullable
@@ -249,16 +255,18 @@ _$VideoEntityCopyWith<_VideoEntity> get copyWith => __$VideoEntityCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.metadata, metadata) || other.metadata == metadata));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.path, path) || other.path == path)&&(identical(other.extension, extension) || other.extension == extension)&&(identical(other.fileName, fileName) || other.fileName == fileName)&&(identical(other.durationMs, durationMs) || other.durationMs == durationMs)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.thumbnailPath, thumbnailPath) || other.thumbnailPath == thumbnailPath)&&(identical(other.metadata, metadata) || other.metadata == metadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,thumbnailPath,metadata);
+int get hashCode {
+    return Object.hash(runtimeType,id,path,extension,fileName,durationMs,width,height,thumbnailPath,metadata);
+}
 
 @override
 String toString() {
-  return 'VideoEntity(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, thumbnailPath: $thumbnailPath, metadata: $metadata)';
+    return 'VideoEntity(id: $id, path: $path, extension: $extension, fileName: $fileName, durationMs: $durationMs, width: $width, height: $height, thumbnailPath: $thumbnailPath, metadata: $metadata)';
 }
 
 
@@ -330,16 +338,21 @@ $VideoMetadataEntityCopyWith<VideoMetadataEntity> get copyWith => _$VideoMetadat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other.customData, customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate));
+  final _this = this as VideoMetadataEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoMetadataEntity&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.capturedAt, _this.capturedAt) || other.capturedAt == _this.capturedAt)&&const DeepCollectionEquality().equals(other.customData, _this.customData)&&(identical(other.overlayImagePath, _this.overlayImagePath) || other.overlayImagePath == _this.overlayImagePath)&&(identical(other.frameRate, _this.frameRate) || other.frameRate == _this.frameRate));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(customData),overlayImagePath,frameRate);
+int get hashCode {
+  final _this = this as VideoMetadataEntity;
+  return Object.hash(runtimeType,_this.title,_this.description,_this.capturedAt,const DeepCollectionEquality().hash(_this.customData),_this.overlayImagePath,_this.frameRate);
+}
 
 @override
 String toString() {
-  return 'VideoMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, frameRate: $frameRate)';
+  final _this = this as VideoMetadataEntity;
+  return 'VideoMetadataEntity(title: ${_this.title}, description: ${_this.description}, capturedAt: ${_this.capturedAt}, customData: ${_this.customData}, overlayImagePath: ${_this.overlayImagePath}, frameRate: ${_this.frameRate})';
 }
 
 
@@ -368,7 +381,7 @@ class _$VideoMetadataEntityCopyWithImpl<$Res>
 /// Create a copy of VideoMetadataEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? capturedAt = freezed,Object? customData = freezed,Object? overlayImagePath = freezed,Object? frameRate = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VideoMetadataEntity(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,capturedAt: freezed == capturedAt ? _self.capturedAt : capturedAt // ignore: cast_nullable_to_non_nullable
@@ -516,7 +529,7 @@ return $default(_that.title,_that.description,_that.capturedAt,_that.customData,
 
 
 class _VideoMetadataEntity extends VideoMetadataEntity {
-   _VideoMetadataEntity({this.title, this.description, this.capturedAt, final  Map<String, dynamic>? customData, this.overlayImagePath, this.frameRate}): _customData = customData,super._();
+   _VideoMetadataEntity({this.title, this.description, this.capturedAt,  Map<String, dynamic>? customData, this.overlayImagePath, this.frameRate}): _customData = customData,super._();
   
 
 @override final  String? title;
@@ -544,16 +557,18 @@ _$VideoMetadataEntityCopyWith<_VideoMetadataEntity> get copyWith => __$VideoMeta
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other._customData, _customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.capturedAt, capturedAt) || other.capturedAt == capturedAt)&&const DeepCollectionEquality().equals(other.customData, _customData)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.frameRate, frameRate) || other.frameRate == frameRate));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(_customData),overlayImagePath,frameRate);
+int get hashCode {
+    return Object.hash(runtimeType,title,description,capturedAt,const DeepCollectionEquality().hash(_customData),overlayImagePath,frameRate);
+}
 
 @override
 String toString() {
-  return 'VideoMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, frameRate: $frameRate)';
+    return 'VideoMetadataEntity(title: $title, description: $description, capturedAt: $capturedAt, customData: $customData, overlayImagePath: $overlayImagePath, frameRate: $frameRate)';
 }
 
 

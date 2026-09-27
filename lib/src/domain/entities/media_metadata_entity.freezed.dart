@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'media_metadata_entity.dart';
@@ -9,6 +9,7 @@ part of 'media_metadata_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $MediaMetadataEntityCopyWith<MediaMetadataEntity> get copyWith => _$MediaMetadat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
+  final _this = this as MediaMetadataEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MediaMetadataEntity&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.overlayImagePath, _this.overlayImagePath) || other.overlayImagePath == _this.overlayImagePath)&&(identical(other.overlayImageUrl, _this.overlayImageUrl) || other.overlayImageUrl == _this.overlayImageUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,overlayImagePath,overlayImageUrl);
+int get hashCode {
+  final _this = this as MediaMetadataEntity;
+  return Object.hash(runtimeType,_this.title,_this.description,_this.overlayImagePath,_this.overlayImageUrl);
+}
 
 @override
 String toString() {
-  return 'MediaMetadataEntity(title: $title, description: $description, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
+  final _this = this as MediaMetadataEntity;
+  return 'MediaMetadataEntity(title: ${_this.title}, description: ${_this.description}, overlayImagePath: ${_this.overlayImagePath}, overlayImageUrl: ${_this.overlayImageUrl})';
 }
 
 
@@ -63,7 +69,7 @@ class _$MediaMetadataEntityCopyWithImpl<$Res>
 /// Create a copy of MediaMetadataEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? overlayImagePath = freezed,Object? overlayImageUrl = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(MediaMetadataEntity(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,overlayImagePath: freezed == overlayImagePath ? _self.overlayImagePath : overlayImagePath // ignore: cast_nullable_to_non_nullable
@@ -227,16 +233,18 @@ _$MediaMetadataEntityCopyWith<_MediaMetadataEntity> get copyWith => __$MediaMeta
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MediaMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MediaMetadataEntity&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.overlayImagePath, overlayImagePath) || other.overlayImagePath == overlayImagePath)&&(identical(other.overlayImageUrl, overlayImageUrl) || other.overlayImageUrl == overlayImageUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,overlayImagePath,overlayImageUrl);
+int get hashCode {
+    return Object.hash(runtimeType,title,description,overlayImagePath,overlayImageUrl);
+}
 
 @override
 String toString() {
-  return 'MediaMetadataEntity(title: $title, description: $description, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
+    return 'MediaMetadataEntity(title: $title, description: $description, overlayImagePath: $overlayImagePath, overlayImageUrl: $overlayImageUrl)';
 }
 
 

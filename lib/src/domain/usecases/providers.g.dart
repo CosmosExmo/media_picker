@@ -114,7 +114,7 @@ final class GetMediasFromGalleryUsecaseProvider
 }
 
 String _$getMediasFromGalleryUsecaseHash() =>
-    r'a3b741118e641f8570a3ee8f76ba730e5e6384f9';
+    r'895142a6e303c24679302cb81c939685fdf3f996';
 
 /// Provider for get medias from files use case
 

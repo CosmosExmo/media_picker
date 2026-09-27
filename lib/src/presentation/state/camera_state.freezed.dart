@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'camera_state.dart';
@@ -9,6 +9,7 @@ part of 'camera_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $CameraStateCopyWith<CameraState> get copyWith => _$CameraStateCopyWithImpl<Came
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraState&&(identical(other.permissionStatus, permissionStatus) || other.permissionStatus == permissionStatus)&&const DeepCollectionEquality().equals(other.capturedMedias, capturedMedias)&&(identical(other.isCapturing, isCapturing) || other.isCapturing == isCapturing)&&(identical(other.isRecording, isRecording) || other.isRecording == isRecording)&&(identical(other.showCameraRoll, showCameraRoll) || other.showCameraRoll == showCameraRoll)&&(identical(other.captureMode, captureMode) || other.captureMode == captureMode)&&(identical(other.currentMetadata, currentMetadata) || other.currentMetadata == currentMetadata)&&(identical(other.recordingDurationSeconds, recordingDurationSeconds) || other.recordingDurationSeconds == recordingDurationSeconds));
+  final _this = this as CameraState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraState&&(identical(other.permissionStatus, _this.permissionStatus) || other.permissionStatus == _this.permissionStatus)&&const DeepCollectionEquality().equals(other.capturedMedias, _this.capturedMedias)&&(identical(other.isCapturing, _this.isCapturing) || other.isCapturing == _this.isCapturing)&&(identical(other.isRecording, _this.isRecording) || other.isRecording == _this.isRecording)&&(identical(other.showCameraRoll, _this.showCameraRoll) || other.showCameraRoll == _this.showCameraRoll)&&(identical(other.captureMode, _this.captureMode) || other.captureMode == _this.captureMode)&&(identical(other.currentMetadata, _this.currentMetadata) || other.currentMetadata == _this.currentMetadata)&&(identical(other.recordingDurationSeconds, _this.recordingDurationSeconds) || other.recordingDurationSeconds == _this.recordingDurationSeconds));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,permissionStatus,const DeepCollectionEquality().hash(capturedMedias),isCapturing,isRecording,showCameraRoll,captureMode,currentMetadata,recordingDurationSeconds);
+int get hashCode {
+  final _this = this as CameraState;
+  return Object.hash(runtimeType,_this.permissionStatus,const DeepCollectionEquality().hash(_this.capturedMedias),_this.isCapturing,_this.isRecording,_this.showCameraRoll,_this.captureMode,_this.currentMetadata,_this.recordingDurationSeconds);
+}
 
 @override
 String toString() {
-  return 'CameraState(permissionStatus: $permissionStatus, capturedMedias: $capturedMedias, isCapturing: $isCapturing, isRecording: $isRecording, showCameraRoll: $showCameraRoll, captureMode: $captureMode, currentMetadata: $currentMetadata, recordingDurationSeconds: $recordingDurationSeconds)';
+  final _this = this as CameraState;
+  return 'CameraState(permissionStatus: ${_this.permissionStatus}, capturedMedias: ${_this.capturedMedias}, isCapturing: ${_this.isCapturing}, isRecording: ${_this.isRecording}, showCameraRoll: ${_this.showCameraRoll}, captureMode: ${_this.captureMode}, currentMetadata: ${_this.currentMetadata}, recordingDurationSeconds: ${_this.recordingDurationSeconds})';
 }
 
 
@@ -63,7 +69,7 @@ class _$CameraStateCopyWithImpl<$Res>
 /// Create a copy of CameraState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? permissionStatus = null,Object? capturedMedias = null,Object? isCapturing = null,Object? isRecording = null,Object? showCameraRoll = null,Object? captureMode = null,Object? currentMetadata = freezed,Object? recordingDurationSeconds = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CameraState(
 permissionStatus: null == permissionStatus ? _self.permissionStatus : permissionStatus // ignore: cast_nullable_to_non_nullable
 as PermissionStatus,capturedMedias: null == capturedMedias ? _self.capturedMedias : capturedMedias // ignore: cast_nullable_to_non_nullable
 as List<MediaEntity>,isCapturing: null == isCapturing ? _self.isCapturing : isCapturing // ignore: cast_nullable_to_non_nullable
@@ -225,7 +231,7 @@ return $default(_that.permissionStatus,_that.capturedMedias,_that.isCapturing,_t
 
 
 class _CameraState extends CameraState {
-   _CameraState({required this.permissionStatus, required final  List<MediaEntity> capturedMedias, required this.isCapturing, required this.isRecording, required this.showCameraRoll, required this.captureMode, this.currentMetadata, this.recordingDurationSeconds}): _capturedMedias = capturedMedias,super._();
+   _CameraState({required this.permissionStatus, required  List<MediaEntity> capturedMedias, required this.isCapturing, required this.isRecording, required this.showCameraRoll, required this.captureMode, this.currentMetadata, this.recordingDurationSeconds}): _capturedMedias = capturedMedias,super._();
   
 
 @override final  PermissionStatus permissionStatus;
@@ -253,16 +259,18 @@ _$CameraStateCopyWith<_CameraState> get copyWith => __$CameraStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraState&&(identical(other.permissionStatus, permissionStatus) || other.permissionStatus == permissionStatus)&&const DeepCollectionEquality().equals(other._capturedMedias, _capturedMedias)&&(identical(other.isCapturing, isCapturing) || other.isCapturing == isCapturing)&&(identical(other.isRecording, isRecording) || other.isRecording == isRecording)&&(identical(other.showCameraRoll, showCameraRoll) || other.showCameraRoll == showCameraRoll)&&(identical(other.captureMode, captureMode) || other.captureMode == captureMode)&&(identical(other.currentMetadata, currentMetadata) || other.currentMetadata == currentMetadata)&&(identical(other.recordingDurationSeconds, recordingDurationSeconds) || other.recordingDurationSeconds == recordingDurationSeconds));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraState&&(identical(other.permissionStatus, permissionStatus) || other.permissionStatus == permissionStatus)&&const DeepCollectionEquality().equals(other.capturedMedias, _capturedMedias)&&(identical(other.isCapturing, isCapturing) || other.isCapturing == isCapturing)&&(identical(other.isRecording, isRecording) || other.isRecording == isRecording)&&(identical(other.showCameraRoll, showCameraRoll) || other.showCameraRoll == showCameraRoll)&&(identical(other.captureMode, captureMode) || other.captureMode == captureMode)&&(identical(other.currentMetadata, currentMetadata) || other.currentMetadata == currentMetadata)&&(identical(other.recordingDurationSeconds, recordingDurationSeconds) || other.recordingDurationSeconds == recordingDurationSeconds));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,permissionStatus,const DeepCollectionEquality().hash(_capturedMedias),isCapturing,isRecording,showCameraRoll,captureMode,currentMetadata,recordingDurationSeconds);
+int get hashCode {
+    return Object.hash(runtimeType,permissionStatus,const DeepCollectionEquality().hash(_capturedMedias),isCapturing,isRecording,showCameraRoll,captureMode,currentMetadata,recordingDurationSeconds);
+}
 
 @override
 String toString() {
-  return 'CameraState(permissionStatus: $permissionStatus, capturedMedias: $capturedMedias, isCapturing: $isCapturing, isRecording: $isRecording, showCameraRoll: $showCameraRoll, captureMode: $captureMode, currentMetadata: $currentMetadata, recordingDurationSeconds: $recordingDurationSeconds)';
+    return 'CameraState(permissionStatus: $permissionStatus, capturedMedias: $capturedMedias, isCapturing: $isCapturing, isRecording: $isRecording, showCameraRoll: $showCameraRoll, captureMode: $captureMode, currentMetadata: $currentMetadata, recordingDurationSeconds: $recordingDurationSeconds)';
 }
 
 
